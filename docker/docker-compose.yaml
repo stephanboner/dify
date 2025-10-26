@@ -906,6 +906,8 @@ services:
       - ./nginx/docker-entrypoint.sh:/docker-entrypoint-mount.sh
       - ./nginx/ssl:/etc/ssl # cert dir (legacy)
       - ./volumes/certbot/conf/live:/etc/letsencrypt/live # cert dir (with certbot container)
+      - /etc/letsencrypt/live/dify.stephanboner.ch/fullchain.pem:/etc/ssl/dify/fullchain.pem:ro
+      - /etc/letsencrypt/live/dify.stephanboner.ch/privkey.pem:/etc/ssl/dify/privkey.pem:ro
       - ./volumes/certbot/conf:/etc/letsencrypt
       - ./volumes/certbot/www:/var/www/html
     entrypoint:
